@@ -9,6 +9,7 @@ public class UserRegistration {
 	String firstName;
 	String lastName;
 	String email;
+	String mobileNumber;
 
 	// Get User Input For Validation
 	public String getFirstName() {
@@ -29,6 +30,12 @@ public class UserRegistration {
 		System.out.println("Enter Email -");
 		email = scanner.nextLine();
 		return email;
+	}
+
+	public String getmobileNumber() {
+		System.out.println("Enter Mobile Number -");
+		email = scanner.next();
+		return mobileNumber;
 	}
 
 	// Checking valid first name
@@ -56,6 +63,7 @@ public class UserRegistration {
 		}
 		return matches;
 	}
+
 	// Checking valid Email
 	public boolean validateEmail(String email) {
 		Pattern pattern = Pattern.compile(
@@ -69,10 +77,24 @@ public class UserRegistration {
 		}
 		return matches;
 	}
-	//Call All Methods Here..
+
+	// Check Validation For Mobile Number
+	public boolean validateMobileNumber(String mobileNumber) {
+		Pattern pattern = Pattern.compile("^[0-9]{2}[ ][0-9]{10}$");
+		Matcher matcher = pattern.matcher(mobileNumber);
+		boolean matches = matcher.find();
+		if (matches) {
+			System.out.println("Its Valid Mobile Number");
+		} else {
+			System.out.println("Its InValid Mobile Number");
+		}
+		return matches;
+	}
+
+	// Call All Methods Here..
 	public static void main(String[] args) {
 		{
-			System.out.println("well Come In User Registration....");
+			System.out.println("Well Come In User Registration....");
 			UserRegistration userRegistration = new UserRegistration();
 			String firstName = userRegistration.getFirstName();
 			userRegistration.validateName(firstName);
@@ -80,6 +102,8 @@ public class UserRegistration {
 			userRegistration.validateLastName(lastName);
 			String email = userRegistration.getEmail();
 			userRegistration.validateEmail(email);
+			String mobileNumber = userRegistration.getmobileNumber();
+			userRegistration.validateMobileNumber(mobileNumber);
 		}
 	}
 }

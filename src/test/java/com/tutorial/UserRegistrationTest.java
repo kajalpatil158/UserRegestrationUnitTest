@@ -31,4 +31,10 @@ public class UserRegistrationTest {
 		boolean result = userRegistration.validateEmail(email);
 		Assert.assertTrue(result);
 	}
+		@Test
+		public void validateMobileNumber() {
+			String email = "91 8600208237";
+			boolean result = userRegistration.validateMobileNumber(email);
+			Assert.assertTrue(result);
+	}
 }
