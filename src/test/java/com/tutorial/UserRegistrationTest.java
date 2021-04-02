@@ -33,8 +33,14 @@ public class UserRegistrationTest {
 	}
 		@Test
 		public void validateMobileNumber() {
-			String email = "91 8600208237";
-			boolean result = userRegistration.validateMobileNumber(email);
+			String mobileNumber = "91 8600208237";
+			boolean result = userRegistration.validateMobileNumber(mobileNumber);
+			Assert.assertTrue(result);
+	}
+		@Test
+		public void validatePassword() {
+			String password = "K@jal158p";
+			boolean result = userRegistration.validateMobileNumber(password);
 			Assert.assertTrue(result);
 	}
 }

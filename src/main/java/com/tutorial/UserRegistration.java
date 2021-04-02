@@ -10,6 +10,7 @@ public class UserRegistration {
 	String lastName;
 	String email;
 	String mobileNumber;
+	String password;
 
 	// Get User Input For Validation
 	public String getFirstName() {
@@ -36,6 +37,12 @@ public class UserRegistration {
 		System.out.println("Enter Mobile Number -");
 		email = scanner.next();
 		return mobileNumber;
+	}
+
+	public String getPassword() {
+		System.out.println("Enter Password -");
+		password = scanner.next();
+		return password;
 	}
 
 	// Checking valid first name
@@ -91,6 +98,20 @@ public class UserRegistration {
 		return matches;
 	}
 
+	// Check Validation For Password
+	public boolean validatePassword(String password) {
+		Pattern pattern = Pattern
+				.compile("^(?=.*[a-z])" + " (?=.*[A-Z])" + "(?=.*[@#$%^&+=])" + "(?=.*[0-9])" + "(?=\\S+$).{8,20}$");
+		Matcher matcher = pattern.matcher(password);
+		boolean matches = matcher.find();
+		if (matches) {
+			System.out.println("Its Valid Password");
+		} else {
+			System.out.println("Its Invalid Password");
+		}
+		return matches;
+	}
+
 	// Call All Methods Here..
 	public static void main(String[] args) {
 		{
@@ -104,6 +125,9 @@ public class UserRegistration {
 			userRegistration.validateEmail(email);
 			String mobileNumber = userRegistration.getmobileNumber();
 			userRegistration.validateMobileNumber(mobileNumber);
-		}
+			String password = userRegistration.getPassword();
+			userRegistration.validatePassword(password);
+			}
 	}
+
 }
