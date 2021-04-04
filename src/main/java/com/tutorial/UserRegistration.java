@@ -12,7 +12,7 @@ public class UserRegistration {
 	String mobileNumber;
 	String password;
 
-	// Get User Input For Validation
+	// Get User Input For Validations
 	public String getFirstName() {
 		System.out.println("Enter your first name");
 		firstName = scanner.nextLine();
@@ -33,15 +33,15 @@ public class UserRegistration {
 		return email;
 	}
 
-	public String getmobileNumber() {
+	public String getMobileNumber() {
 		System.out.println("Enter Mobile Number -");
-		email = scanner.next();
+		mobileNumber = scanner.nextLine();
 		return mobileNumber;
 	}
 
 	public String getPassword() {
 		System.out.println("Enter Password -");
-		password = scanner.next();
+		password = scanner.nextLine();
 		return password;
 	}
 
@@ -85,34 +85,30 @@ public class UserRegistration {
 		return matches;
 	}
 
-	// Check Validation For Mobile Number
 	public boolean validateMobileNumber(String mobileNumber) {
-		Pattern pattern = Pattern.compile("^[0-9]{2}[ ][0-9]{10}$");
+		Pattern pattern = Pattern.compile("[0-9]{2}[ ][0-9]{10}");
 		Matcher matcher = pattern.matcher(mobileNumber);
 		boolean matches = matcher.find();
 		if (matches) {
-			System.out.println("Its Valid Mobile Number");
+			System.out.println("Mobile Number Is Valid");
 		} else {
-			System.out.println("Its InValid Mobile Number");
+			System.out.println("Mobile Number Is Invalid");
 		}
 		return matches;
 	}
 
-	// Check Validation For Password
 	public boolean validatePassword(String password) {
-		Pattern pattern = Pattern
-				.compile("^(?=.*[a-z])" + " (?=.*[A-Z])" + "(?=.*[@#$%^&+=])" + "(?=.*[0-9])" + "(?=\\S+$).{8,20}$");
+		Pattern pattern = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])((?=.+[!$%^&*(),.:@#^]){1}).{8,}$");
 		Matcher matcher = pattern.matcher(password);
 		boolean matches = matcher.find();
 		if (matches) {
-			System.out.println("Its Valid Password");
+			System.out.println("Password Is Valid");
 		} else {
-			System.out.println("Its Invalid Password");
+			System.out.println("Password Is Invalid ");
 		}
 		return matches;
 	}
 
-	// Call All Methods Here..
 	public static void main(String[] args) {
 		{
 			System.out.println("Well Come In User Registration....");
@@ -123,11 +119,10 @@ public class UserRegistration {
 			userRegistration.validateLastName(lastName);
 			String email = userRegistration.getEmail();
 			userRegistration.validateEmail(email);
-			String mobileNumber = userRegistration.getmobileNumber();
+			String mobileNumber = userRegistration.getMobileNumber();
 			userRegistration.validateMobileNumber(mobileNumber);
 			String password = userRegistration.getPassword();
 			userRegistration.validatePassword(password);
-			}
+		}
 	}
-
 }

@@ -40,7 +40,7 @@ public class UserRegistrationTest {
 		@Test
 		public void validatePassword() {
 			String password = "K@jal158p";
-			boolean result = userRegistration.validateMobileNumber(password);
+			boolean result = userRegistration.validatePassword(password);
 			Assert.assertTrue(result);
 	}
 }
